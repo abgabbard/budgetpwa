@@ -4,6 +4,7 @@ const FILES_TO_CACHE = [
     '/db.js',
     '/index.js',
     '/styles.css',
+    '/icons',
 
     'https://fonts.googleapis.com/css?family=Istok+Web|Montserrat:800&display=swap',
     'https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css',
@@ -42,7 +43,7 @@ const FILES_TO_CACHE = [
   });
   
   self.addEventListener('fetch', (event) => {
-    if (event.request.url.startsWith(self.location.origin)) {
+    if (event.request.url.includes("/api/transactions")) {
       event.respondWith(
         caches.match(event.request).then((cachedResponse) => {
           if (cachedResponse) {
